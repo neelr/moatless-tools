@@ -438,8 +438,6 @@ class AgenticLoop:
         if self.state.action_type() is None:
             completion_response = litellm.completion(
                 model=self.state.model,
-                max_tokens=self.state.max_tokens,
-                temperature=self.state.temperature,
                 stop=self.state.stop_words(),
                 metadata=metadata,
                 messages=messages,
@@ -456,8 +454,6 @@ class AgenticLoop:
                 action_request, completion_response = (
                     client.chat.completions.create_with_completion(
                         model=self.state.model,
-                        max_tokens=self.state.max_tokens,
-                        temperature=self.state.temperature,
                         stop=self.state.stop_words(),
                         response_model=self.state.action_type(),
                         metadata=metadata,
